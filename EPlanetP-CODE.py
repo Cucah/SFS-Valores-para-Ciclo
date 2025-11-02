@@ -65,8 +65,8 @@ def menu():
   elif start == "ph" or start == "3":
       print("\n" * 100)
       esp = 2500
-      alturapara = float(input('Parachute Height (1.0 = 2500.0) '))
-      resultpara = esp * alturapara
+      alturapara = float(input('Parachute Height (ex: 2500.0 = 1.0) '))
+      resultpara = alturapara / esp
       print(f'result: {resultpara:.1f}')
       returno()
       
