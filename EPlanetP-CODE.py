@@ -1,89 +1,77 @@
 # -- EPP --
 # by @cucah (Discord / GitHub)
+# codigo limpo e diminuido, agora ta melhor de visualizar
 
 from math import pi
 from time import sleep as to
+import os
 
-def returno():
-    to(4)
-    print("return Menu? (Y/n)")
-    rese = input("_").lower()
-    if rese in ["y", "yes"]:
-        print("\n" * 100)
-        menu()
-    else:
-         quit()
-         
-# volta pro menu, é so isso.
+def limpa():
+    os.system("cls" if os.name == "nt" else "clear")
+def pausa():
+     to(2)
+     input("Return menu (Enter)")
 
 def menu():
-  print("----- MENU -----\n\nCustom Heightmap(CH/1)\nCycle Texture(CT/2)\nParachute Height(PH/3)\nCurve Atmosphere(NOT FINISHED)")
-  start = input("\nselect:_").lower()
-  
-# menu inicial porra, tu é burro?
-  
-# -- IMAGE TO HEIGHTMAP --
-  
-  
-  if start == "ch" or start == "1":
-      print("\n" * 100)
-      raioplanet = float(input('Planet Radius (ex: 45000.0) '))
-      resultheight = pi * 2 * raioplanet
-      print(f'result: {resultheight:.1f}')
-      returno()
-      
-# informação de como fazer o calculo foi retirada do grupo oficial do Spaceflight Simulator dito por **4poll0**, agradenço o compartilhamento do calculo.
-      
-# -- CYCLE TEXTURE ERROR --
+  while True:
+# MENU inicial porra, tu é burro?
+          limpa()
+          print("----- MENU -----\n\nCustom Heightmap(CH/1)\nCycle Texture(CT/2)\nParachute Height(PH/3)\nCurve Atmosphere(NOT FINISHED)\nExit(Ex/5)")
+          start = input("\nselect:_").lower()
 
-  elif start == "ct" or start == "2":
-      print("\n" * 100)
-      raiocycle = float(input("Planet Radius (ex: 86500.0) "))
-      alturastart = float(input('StartHeight (ex: -2500.0) '))
-      
-      
-# valores negativos
-      if alturastart <= 0:
-           menos = raiocycle -- alturastart # 86500 - 1000 = 85500 * 2pi = resultado
-           resultcycle = menos * 2 * pi
-           
-           print(f'result: {resultcycle:.1f}')
-           returno()
-           
-# valores possitivos                  
-      elif alturastart > 0:
-           menos = raiocycle + alturastart # 86500 + 1000 = 87500 * 2pi = resultado 
-           resultcycle = menos * 2 * pi
-           
-           print(f'result: {resultcycle:.1f}')
-           returno()
+# -- IMAGE TO HEIGHTMAP --
+          if start in ["ch", "1"]:
+              limpa()
+              raio_planet = float(input('Planet Radius (ex: 45000.0) '))
+              result_height = pi * 2 * raio_planet
+              print(f'result: {result_height:.1f}')
+              pausa()
+# informação de como fazer o calculo foi retirada do grupo oficial do Spaceflight Simulator dito por **4poll0**, agradenço o compartilhamento do calculo.
+
+# -- CYCLE TEXTURE ERROR --
+          elif start in ["ct", "2"]:
+              limpa()
+              raio_cycle = float(input("Planet Radius (ex: 86500.0) "))
+              altura_start = float(input('StartHeight (ex: -2500.0) '))
+# valores negativos e positivos
+
+              adisub = raio_cycle + altura_start 
+# 86500 +/- 1000 = 85500/87500 * 2pi = resultado
+              result_cycle = adisub * 2 * pi
+              print(f'result: {result_cycle:.1f}')
+              pausa()
 
 # se alterado, lembre de conferir se dá o mesmo resultado final. um valor fácil para lembrar é utilizar o raio da Moon (86500) e gravar o resultado emitido aqui e conferir na sua versão. c
 
 # -- PARACHUTE DEPLOY HEIGHT -- u
+          elif start in ["ph", "3"]:
+              limpa()
+              padrao = 2500
+              altura_para = float(input('Parachute Height (ex: 2500.0 = result 1.0) '))
+              result_para = altura_para / padrao
+              print(f'result: {result_para:.1f}')
+              pausa()
 
-  elif start == "ph" or start == "3":
-      print("\n" * 100)
-      esp = 2500
-      alturapara = float(input('Parachute Height (ex: 2500.0 = 1.0) '))
-      resultpara = alturapara / esp
-      print(f'result: {resultpara:.1f}')
-      returno()
-      
 # o valor padrão é 2500, então 0.1 = 250, resultando em 1.1 = 2750. c
-    
+
 # -- ATMOSPHERE CURVE (REENTRY START HEIGHT) -- a
-      
-  elif start == "ca" or start == "4":
-      print("\n" * 100)
-      print('get out')
-      returno()
-      
 # ainda ta sendo feito, e testado essa parte sobre o curve. h
-      
-  else:
-      print("incorrect option.")
-      returno()
+          elif start in ["ca", "4"]:
+              limpa()
+              print('get out')
+              pausa()
+
+
+          elif start in ["ex", "5"]:
+                    limpa()
+                    print("bye...")
+                    print(":(")
+                    break
+                    
+
+          else:
+              print("incorrect option.")
 menu()
+
 
 # by @cucah (Discord / GitHub)
